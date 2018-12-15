@@ -1,0 +1,61 @@
+<mat-toolbar>
+	<button mat-raised-button class="push-left" (click)="AddPageElement()">
+		<mat-icon>add</mat-icon>
+	</button>
+
+	<button mat-raised-button class="push-left" (click)="HeaderEnabled = !HeaderEnabled;">
+		<span *ngIf="!HeaderEnabled">Enable</span>
+
+		<span *ngIf="HeaderEnabled">Disable</span>
+
+		Header
+	</button>
+</mat-toolbar>
+
+<mat-card>
+	<mat-card-header *ngIf="HeaderEnabled">
+		<fieldset>
+			<legend>Header</legend>
+
+			<mat-form-field class="mat-full-width">
+				<input matInput placeholder="Title" [(ngModel)]="Details.Title" name="title" />
+			</mat-form-field>
+
+			<mat-form-field class="mat-full-width">
+				<input matInput placeholder="Subtitle" [(ngModel)]="Details.Subtitle" name="subtitle" />
+			</mat-form-field>
+
+			<mat-form-field class="mat-full-width">
+				<input matInput placeholder="Card Avatar Class" [(ngModel)]="Details.CardAvatarClass" name="cardAvatarClass" />
+			</mat-form-field>
+		</fieldset>
+	</mat-card-header>
+
+	<!--<img mat-card-image *ngIf="Details.CardImage" [attr.src]="CleanImage(Details.CardImage)" [attr.alt]="Details.CardImageAltText || ''">-->
+
+	<mat-card-content *ngIf="Details.Elements">
+		<ng-container *ngFor="let pe of Details.Elements; let i = index;">
+			<div class="contents {{pe.Rendering ? pe.Rendering.Lookup || '' : ''}}" *ngIf="pe && pe.Control">
+				<forge-page-element [element]="pe" [state]="GetBuilderState(pe)" [context]="Context" [data]="Data" [force-header]="true" [show-delete-action]="false">
+					<ng-container ngProjectAs="main-menu-actions">
+						<button mat-menu-item (click)="RemovePageElement(pe, i)">Delete</button>
+					</ng-container>
+
+					<!--<ng-container ngProjectAs="trail-actions">
+						<button mat-icon-button>
+							<mat-icon>drag_handle</mat-icon>
+						</button>
+					</ng-container>-->
+				</forge-page-element>
+			</div>
+		</ng-container>
+	</mat-card-content>
+
+	<!--<mat-card-actions *ngIf="Details.Actions">
+		<display-component [element]="Details.Actions" state="Render" [data]="Data"></display-component>
+	</mat-card-actions>
+
+	<mat-card-footer *ngIf="Details.Footer">
+		<display-component [element]="Details.Footer" state="Render" [data]="Data"></display-component>
+	</mat-card-footer>-->
+</mat-card>

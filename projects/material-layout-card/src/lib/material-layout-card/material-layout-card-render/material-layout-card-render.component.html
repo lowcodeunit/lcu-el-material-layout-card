@@ -1,0 +1,28 @@
+<mat-card>
+	<mat-card-header *ngIf="Details.CardAvatarClass || Details.Title || Details.Subtitle">
+		<div mat-card-avatar class="{{Details.CardAvatarClass || ''}}"></div>
+
+		<mat-card-title *ngIf="Details.Title">{{Details.Title}}</mat-card-title>
+
+		<mat-card-subtitle *ngIf="Details.Subtitle">{{Details.Subtitle}}</mat-card-subtitle>
+	</mat-card-header>
+
+	<img mat-card-image *ngIf="Details.CardImage" [attr.src]="CleanImage(Details.CardImage)" [attr.alt]="Details.CardImageAltText || ''">
+
+	<mat-card-content *ngIf="RenderElements">
+		<ng-container *ngFor="let info of RenderElements; let i = index;">
+			<forge-page-element [element]="info.Element" state="Render" [context]="info.Context" [data]="Data">
+			</forge-page-element>
+		</ng-container>
+	</mat-card-content>
+
+	<mat-card-actions *ngIf="Details.Actions">
+		<forge-page-element [element]="Details.Actions" state="Render" [context]="Context" [data]="Data">
+		</forge-page-element>
+	</mat-card-actions>
+
+	<mat-card-footer *ngIf="Details.Footer">
+		<forge-page-element [element]="Details.Footer" state="Render" [context]="Context" [data]="Data">
+		</forge-page-element>
+	</mat-card-footer>
+</mat-card>
