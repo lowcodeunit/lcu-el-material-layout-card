@@ -1,4 +1,4 @@
-import { ForgeRenderingDetails, PageElement } from '@lowcodeunit/core';
+import { ForgeRenderingDetails, PageElement } from '@lcu/elements';
 
 export class ForgeMaterialLayoutCardDetails extends ForgeRenderingDetails<ForgeMaterialLayoutCardConfig> {
 	public Actions: PageElement;

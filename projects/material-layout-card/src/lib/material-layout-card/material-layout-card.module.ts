@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { DndModule } from '@beyerleinf/ngx-dnd';
-import { FathymSharedModule } from '@lowcodeunit/common';
-import { BaseDisplayModule, ForgeBuildersCoreModule } from '@lowcodeunit/elements';
+import { FathymSharedModule } from '@lcu/hosting';
+import { BaseDisplayModule } from '@lcu/elements';
 import { ForgeMaterialLayoutCardBuilderComponent } from './material-layout-card-builder/material-layout-card-builder.component';
 import { ForgeMaterialLayoutCardMarketplaceComponent } from './material-layout-card-marketplace/material-layout-card-marketplace.component';
 import { ForgeMaterialLayoutCardRenderComponent } from './material-layout-card-render/material-layout-card-render.component';
 import { MatAutocompleteModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatInputModule, MatMenuModule, MatToolbarModule } from '@angular/material';
+import { DAFUIModule } from '@lcu/daf-ui';
 
 export class ForgeMaterialLayoutCardDisplayModule extends BaseDisplayModule {
 	public Builder() {
@@ -30,7 +31,7 @@ var comps = [
 @NgModule({
 	imports: [
 		FathymSharedModule,
-		ForgeBuildersCoreModule,
+		DAFUIModule,
 		DndModule,
 		MatAutocompleteModule,
 		MatButtonModule,

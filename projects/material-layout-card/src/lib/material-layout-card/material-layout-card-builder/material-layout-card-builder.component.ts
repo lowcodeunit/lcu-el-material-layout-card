@@ -1,5 +1,6 @@
 import { Component, Injector } from '@angular/core';
-import { IControlBuilder, ForgeGenericControl } from '@lowcodeunit/elements';
+import { IControlBuilder } from '@lcu/elements';
+import { ForgeGenericControl } from '@lcu/daf-ui';
 import { ForgeMaterialLayoutCardDetails, ForgeMaterialLayoutCardConfig } from '../material-layout-card.core';
 import { DomSanitizer } from '@angular/platform-browser';
 
